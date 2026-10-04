@@ -375,12 +375,15 @@
     .dangle {
       position: absolute;
       top: 0;
+      height: 150px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      z-index: 0;
+      z-index: 2;
+      pointer-events: none;
       line-height: 0;
-      animation: drop 3.2s steps(10) infinite alternate
+      will-change: transform;
+      animation: drop 2.2s ease-in-out infinite alternate
     }
 
     .dangle::before {
@@ -392,11 +395,11 @@
 
     @keyframes drop {
       from {
-        height: 50px
+        transform: translateY(-100px)
       }
 
       to {
-        height: 150px
+        transform: translateY(0)
       }
     }
 
@@ -691,7 +694,7 @@
 
     .fly.b {
       top: 40px;
-      animation-duration: 15s;
+      animation-duration: 2.4s;
       animation-delay: -6s
     }
 
@@ -842,125 +845,46 @@
     }
 
     /* ── Pixel Witch ── */
-    .witch-wrap {
-      position: fixed;
-      z-index: 999;
-      pointer-events: none;
-      filter: drop-shadow(0 0 8px rgba(155, 107, 214, .5));
-      transition: opacity .4s ease, transform .4s ease;
-      will-change: left, top
-    }
-
-    .witch-wrap.hide {
-      opacity: 0;
-      transform: scale(.2)
-    }
-
-    .witch-wrap.timeline-mode {
+    .witch {
       position: absolute;
-      transition: top .8s cubic-bezier(.4, 0, .2, 1), left .8s cubic-bezier(.4, 0, .2, 1), opacity .4s ease
-    }
-
-    .witch-flipper {
-      transition: transform .3s ease
-    }
-
-    .witch-inner {
-      animation: witch-bob 1.6s ease-in-out infinite
-    }
-
-    .witch-wrap.timeline-mode .witch-inner {
-      animation: witch-swing 2.4s ease-in-out infinite
-    }
-
-    @keyframes witch-bob {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(-1deg)
-      }
-
-      50% {
-        transform: translateY(-8px) rotate(2deg)
-      }
-    }
-
-    @keyframes witch-swing {
-      0% {
-        transform: translate(0, 0) rotate(-3deg)
-      }
-
-      25% {
-        transform: translate(12px, -14px) rotate(4deg)
-      }
-
-      50% {
-        transform: translate(-4px, -20px) rotate(-2deg)
-      }
-
-      75% {
-        transform: translate(-16px, -8px) rotate(3deg)
-      }
-
-      100% {
-        transform: translate(0, 0) rotate(-3deg)
-      }
-    }
-
-    /* sparkle burst on vanish / appear */
-    .witch-sparkle {
-      position: fixed;
-      width: 6px;
-      height: 6px;
+      left: 0;
+      top: 0;
+      z-index: 9;
       pointer-events: none;
-      z-index: 1000;
-      opacity: 0
+      line-height: 0;
+      will-change: transform
     }
 
-    .witch-sparkle.pop {
-      animation: sparkle-pop .6s steps(6) forwards
+    .wbob {
+      animation: wbob .7s steps(2) infinite
     }
 
-    @keyframes sparkle-pop {
-      0% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1.2)
-      }
-
-      100% {
-        opacity: 0;
-        transform: translate(var(--sx), var(--sy)) scale(0)
+    @keyframes wbob {
+      50% {
+        transform: translateY(-3px)
       }
     }
 
-    /* trailing particles */
-    .witch-trail {
-      position: fixed;
-      width: 4px;
-      height: 4px;
+    .wspark {
+      position: absolute;
+      width: 3px;
+      height: 3px;
       pointer-events: none;
-      z-index: 998;
-      opacity: .85;
-      animation: trail-fade .55s steps(3) forwards
+      z-index: 8;
+      animation: wspark .7s steps(4) forwards
     }
 
-    @keyframes trail-fade {
+    @keyframes wspark {
       to {
         opacity: 0;
-        transform: translateY(14px) scale(0)
+        transform: translateY(9px)
       }
     }
 
     @media (prefers-reduced-motion:reduce) {
 
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        scroll-behavior: auto !important
-      }
-
-      .witch-wrap {
+      .witch,
+      .wspark {
         display: none
       }
     }
@@ -998,7 +922,7 @@
       <div class="dangle" style="left:14%">
         <div data-spider data-px="5"></div>
       </div>
-      <div class="dangle" style="right:30%;animation-duration:4.4s;animation-delay:-1.5s">
+      <div class="dangle" style="right:30%;animation-duration:2.6s;animation-delay:-1.5s">
         <div data-spider data-px="4"></div>
       </div>
       <div class="crawl">
@@ -1044,7 +968,7 @@
 
     <section id="timeline" class="split">
       <div class="deco web l" data-web="15" data-px="10"></div>
-      <div class="dangle" style="right:8%;animation-duration:3.8s">
+      <div class="dangle" style="right:8%;animation-duration:2.2s">
         <div data-spider data-px="5"></div>
       </div>
       <div class="wrap">
@@ -1163,11 +1087,11 @@
         <div class="grid">
           <div class="card soon"><span class="px">TRACK 1</span>
             <h3>Best use of Gemma 4</h3>
-            <p>Statements drop at kickoff. Date: TBA.</p>
+            <p>Statements drop at kickoff.</p>
           </div>
           <div class="card soon"><span class="px">TRACK 2</span>
             <h3>Best open-source AI project</h3>
-            <p>Statements drop at kickoff. Date: TBA.</p>
+            <p>Statements drop at kickoff.</p>
           </div>
         </div>
       </div>
@@ -1208,7 +1132,7 @@
 
     <section id="contact" class="split contact">
       <div class="deco web r" data-web="15" data-px="10"></div>
-      <div class="dangle" style="left:6%;animation-duration:4.8s;animation-delay:-2s">
+      <div class="dangle" style="left:6%;animation-duration:2.9s;animation-delay:-2s">
         <div data-spider data-px="5"></div>
       </div>
       <div class="wrap">
@@ -1246,11 +1170,7 @@
   </footer>
 
   <!-- Pixel Witch -->
-  <div class="witch-wrap" id="witch">
-    <div class="witch-flipper" id="witch-flipper">
-      <div class="witch-inner" id="witch-inner"></div>
-    </div>
-  </div>
+  <div class="witch" id="witch" aria-hidden="true"></div>
 
   <script>
     const C = { o: '#f08a24', k: '#16231f', g: '#5aa05a', w: '#f3f1ea', p: '#9b6bd6', r: '#e5331f', y: '#ffd75e', m: '#fff3b0', c: '#e0cf80', d: '#4a2f6b', x: '#6b3a1e' };
@@ -1283,222 +1203,86 @@
       if (tick()) { const id = setInterval(() => { if (!tick()) clearInterval(id) }, 1000) }
     })();
 
-    /* ── Pixel Witch Logic ── */
+    /* ── Pixel Witch: a tiny visitor who explores the page on her own ── */
     (() => {
-      // Combined witch-on-broom sprite (28 cols x 22 rows)
-      // p=purple(hat/cape), k=black, w=cream/skin, r=red, d=dark-purple
-      // x=brown(broom handle), g=green(bristles), o=orange(bristle tips)
-      const WITCH_SPRITE = [
-        '........pppp................',
-        '.......pppppp...............',
-        '......pppppppp..............',
-        '.....pprrrrpppp.............',
-        '....pppppppppppp............',
-        '...ppwwwwwwwwpppp...........',
-        '...ppwkwwwkwwppp............',
-        '...ppwwwwwwwwppp............',
-        '...ppwwrrrwwwpp.............',
-        '....pwwwwwwwpp..............',
-        '....pddppddpp..............',
-        '...pddppppddpp.............',
-        '..pdddppppddddxxxxxxxxxxx..',
-        '..pddppppppddpxxxxxgggggooo',
-        '..pdppppppppdp.....gggggooo',
-        '..pppppppppppp.....gggggooo',
-        '..pp..pppp..pp.....gggggooo',
-        '..pp..pppp..pp.....gggggooo',
-        '..kk..kkkk..kk....gggggooo'
-      ].join('/');
+      const el = document.getElementById('witch');
+      if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      // side view, facing right: hat, profile face, sitting on a broom with bristles trailing behind
+      const S = ['........p........', '.......pp........', '......ppp........', '....ppppppp......', '......ddwwk......', '.....ppppppw.....', 'ogg..pppppp......', 'oggxxxxxxxxxxxxxx', 'ogg....pp.pp.....', '.......kk.kk.....'];
+      const px = 3, W = S[0].length * px, H = S.length * px;
+      let rects = '';
+      S.forEach((r, y) => [...r].forEach((ch, x) => { if (C[ch]) rects += '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="' + C[ch] + '"/>'; }));
+      el.innerHTML = '<div class="wbob"><div class="wflip"><svg viewBox="0 0 17 10" width="' + W + '" height="' + H + '" shape-rendering="crispEdges">' + rects + '</svg></div></div>';
+      const flip = el.querySelector('.wflip');
+      const cols = ['#9b6bd6', '#ffd75e', '#ee7770', '#86a5dc'];
+      let maxX = 0, maxY = 0;
+      const bounds = () => { maxX = document.documentElement.clientWidth - W - 4; maxY = document.documentElement.scrollHeight - H - 8; };
+      bounds(); addEventListener('resize', bounds);
+      let x = maxX * .7, y = 120, vx = 0, vy = 0, tx = x, ty = y, wait = 1.5, face = 1, lastEl = null, sp = 0, mul = 1, chase = null, chaseT = 0, last = performance.now();
 
-      const witchEl = document.getElementById('witch');
-      const witchFlipper = document.getElementById('witch-flipper');
-      const witchInner = document.getElementById('witch-inner');
-
-      // Render sprite using existing color map C
-      const renderSprite = (spriteStr, px) => {
-        const rows = spriteStr.split('/');
-        const w = rows[0].length;
-        let s = '';
-        rows.forEach((r, y) => [...r].forEach((ch, x_) => {
-          if (C[ch]) s += '<rect' + (ch === 'y' ? ' class="lit"' : '') + ' x="' + x_ + '" y="' + y + '" width="1" height="1" fill="' + C[ch] + '"/>';
-        }));
-        return '<svg viewBox="0 0 ' + w + ' ' + rows.length + '" width="' + w * px + '" height="' + rows.length * px + '" shape-rendering="crispEdges" aria-hidden="true">' + s + '</svg>';
-      };
-
-      // Render at 5px per pixel = 140 x 95 px total
-      witchInner.innerHTML = renderSprite(WITCH_SPRITE, 5);
-
-      // State
-      let curX = window.innerWidth - 200;
-      let curY = 100;
-      let targetX = curX;
-      let targetY = curY;
-      let visible = true;
-      let inTimeline = false;
-      let currentTlIdx = -1;
-      let vanishTimer = null;
-      let tlCycleTimer = null;
-
-      const tlSection = document.getElementById('timeline');
-      const tlItems = document.querySelectorAll('.tl li');
-
-      // Set initial position
-      witchEl.style.left = curX + 'px';
-      witchEl.style.top = curY + 'px';
-
-      // Trail particles
-      const trailColors = ['#9b6bd6', '#ffd75e', '#ee7770', '#86a5dc'];
-      let trailCount = 0;
-
-      function spawnTrail(x, y) {
-        if (trailCount > 12) return;
-        const t = document.createElement('div');
-        t.className = 'witch-trail';
-        t.style.left = (x + Math.random() * 24 - 12) + 'px';
-        t.style.top = (y + Math.random() * 14) + 'px';
-        t.style.background = trailColors[Math.floor(Math.random() * trailColors.length)];
-        document.body.appendChild(t);
-        trailCount++;
-        t.addEventListener('animationend', () => { t.remove(); trailCount--; });
-      }
-
-      // Sparkle burst for vanish/reappear
-      function sparkles(cx, cy) {
-        for (let i = 0; i < 14; i++) {
-          const s = document.createElement('div');
-          s.className = 'witch-sparkle';
-          const angle = (Math.PI * 2 / 14) * i;
-          const dist = 18 + Math.random() * 35;
-          s.style.cssText = 'left:' + cx + 'px;top:' + cy + 'px;background:' + trailColors[i % trailColors.length] + ';--sx:' + (Math.cos(angle) * dist) + 'px;--sy:' + (Math.sin(angle) * dist) + 'px';
-          document.body.appendChild(s);
-          requestAnimationFrame(() => s.classList.add('pop'));
-          s.addEventListener('animationend', () => s.remove());
+      // choose somewhere on the page to visit, like a reader skimming headings, cards and buttons
+      function pick() {
+        bounds();
+        mul = Math.random() < .4 ? 2.2 : 1;     // sometimes hasty, sometimes relaxed
+        if (Math.random() < .3) {               // sometimes chase a spider
+          const sps = [...document.querySelectorAll('[data-spider]')].map(e => [e, e.getBoundingClientRect()]).filter(([e, r]) => r.width > 0);
+          const near = sps.filter(([e, r]) => r.bottom > 0 && r.top < innerHeight);
+          const pool = near.length && Math.random() < .7 ? near : sps;
+          if (pool.length) { chase = pool[Math.floor(Math.random() * pool.length)][0]; chaseT = 4 + Math.random() * 3; mul = 2.4; return; }
         }
+        const all = [...document.querySelectorAll('h1,h2,h3,.card,.btn,summary,.deco,.tl li,.coc p')]
+          .map(e => [e, e.getBoundingClientRect()]).filter(([e, r]) => e !== lastEl && r.width > 0 && r.height > 0);
+        if (!all.length) return;
+        const seen = all.filter(([e, r]) => r.bottom > 0 && r.top < innerHeight);
+        const pool = seen.length && Math.random() < .6 ? seen : all;
+        const [e, r] = pool[Math.floor(Math.random() * pool.length)];
+        lastEl = e;
+        tx = Math.min(maxX, Math.max(0, scrollX + r.left + Math.random() * Math.max(0, r.width - W)));
+        ty = Math.min(maxY, Math.max(8, scrollY + r.top - H - 6 - Math.random() * 16));
       }
 
-      // Vanish / reappear
-      function scheduleVanish() {
-        clearTimeout(vanishTimer);
-        vanishTimer = setTimeout(() => {
-          if (!visible) return;
-          visible = false;
-          const rect = witchEl.getBoundingClientRect();
-          sparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
-          witchEl.classList.add('hide');
-
-          setTimeout(() => {
-            visible = true;
-            if (!inTimeline) {
-              curX = targetX + (Math.random() - 0.5) * 80;
-              curY = targetY + (Math.random() - 0.5) * 50;
-            }
-            witchEl.classList.remove('hide');
-            const rect2 = witchEl.getBoundingClientRect();
-            sparkles(rect2.left + rect2.width / 2, rect2.top + rect2.height / 2);
-            scheduleVanish();
-          }, 1800 + Math.random() * 2000);
-        }, 9000 + Math.random() * 8000);
-      }
-      scheduleVanish();
-
-      // Timeline visibility check
-      function isTlVisible() {
-        if (!tlSection) return false;
-        const r = tlSection.getBoundingClientRect();
-        return r.top < window.innerHeight * 0.65 && r.bottom > window.innerHeight * 0.35;
+      function spark() {
+        if (document.querySelectorAll('.wspark').length > 14) return;
+        const s = document.createElement('i');
+        s.className = 'wspark';
+        s.style.left = Math.min(maxX + W, Math.max(0, x + (face > 0 ? 0 : W - px) + Math.random() * 6 - 3)) + 'px';
+        s.style.top = (y + H * .7 + Math.random() * 6) + 'px';
+        s.style.background = cols[Math.random() * 4 | 0];
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 700);
       }
 
-      // Timeline cycle: fly to each item one by one
-      function startTlCycle() {
-        if (tlCycleTimer) return;
-        currentTlIdx = 0;
-        moveToTlItem(currentTlIdx);
-        tlCycleTimer = setInterval(() => {
-          if (!inTimeline || !visible) return;
-          currentTlIdx = (currentTlIdx + 1) % tlItems.length;
-          moveToTlItem(currentTlIdx);
-        }, 2600);
-      }
-
-      function stopTlCycle() {
-        clearInterval(tlCycleTimer);
-        tlCycleTimer = null;
-        currentTlIdx = -1;
-      }
-
-      function moveToTlItem(idx) {
-        const item = tlItems[idx];
-        if (!item) return;
-        // Get item position relative to the timeline section
-        const sectionRect = tlSection.getBoundingClientRect();
-        const itemRect = item.getBoundingClientRect();
-        targetX = itemRect.left - sectionRect.left - 80;
-        targetY = itemRect.top - sectionRect.top + window.scrollY - tlSection.offsetTop - 20;
-      }
-
-      // Scroll handler
-      let scrollTick = false;
-      window.addEventListener('scroll', () => {
-        if (scrollTick) return;
-        scrollTick = true;
-        requestAnimationFrame(() => {
-          const sy = window.scrollY;
-
-          if (isTlVisible()) {
-            if (!inTimeline) {
-              inTimeline = true;
-              witchEl.classList.add('timeline-mode');
-              tlSection.style.position = 'relative';
-              tlSection.appendChild(witchEl);
-              startTlCycle();
-            }
-          } else {
-            if (inTimeline) {
-              inTimeline = false;
-              witchEl.classList.remove('timeline-mode');
-              document.body.appendChild(witchEl);
-              stopTlCycle();
-            }
-            // Float on the right side with gentle wave
-            targetX = window.innerWidth - 200 + Math.sin(sy * 0.008) * 40;
-            targetY = 100 + Math.sin(sy * 0.006) * 25;
-          }
-          scrollTick = false;
-        });
-      });
-
-      // Animation loop — lerp toward target
-      function animate() {
-        if (visible) {
-          if (inTimeline) {
-            witchEl.style.left = targetX + 'px';
-            witchEl.style.top = targetY + 'px';
-          } else {
-            curX += (targetX - curX) * 0.05;
-            curY += (targetY - curY) * 0.05;
-            witchEl.style.left = curX + 'px';
-            witchEl.style.top = curY + 'px';
-
-            if (Math.random() < 0.18) {
-              spawnTrail(curX + 60, curY + 65);
-            }
-          }
+      function frame(now) {
+        const dt = Math.min(.05, (now - last) / 1000); last = now;
+        if (chase) {                          // keep up with the moving spider
+          const r = chase.getBoundingClientRect();
+          tx = Math.min(maxX, Math.max(0, scrollX + r.left - W * .4));
+          ty = Math.min(maxY, Math.max(8, scrollY + r.top - H * .5));
+          chaseT -= dt;
+          if (chaseT <= 0) { chase = null; wait = 1 + Math.random() * 2; for (let i = 0; i < 6; i++) spark(); }
         }
-        requestAnimationFrame(animate);
-      }
-      animate();
-
-      // Flip witch based on movement direction
-      let prevX = curX;
-      setInterval(() => {
-        const cx = inTimeline ? targetX : curX;
-        if (cx < prevX - 2) {
-          witchFlipper.style.transform = 'scaleX(-1)';
-        } else if (cx > prevX + 2) {
-          witchFlipper.style.transform = 'scaleX(1)';
+        const dx = tx - x, dy = ty - y, d = Math.hypot(dx, dy);
+        if (wait > 0) {                       // hovering, "reading"
+          wait -= dt; vx *= .9; vy *= .9;
+          if (wait <= 0) pick();
+        } else if (d < 10 && !chase) {
+          wait = 1.6 + Math.random() * 3.4;
+        } else {                              // cruise, easing in and out
+          const speed = Math.min(240 * mul, Math.max(70 * mul, d * .7 * mul)) * Math.min(1, d / 60 + .25);
+          const k = Math.min(1, dt * 2.2 * (mul > 1 ? 1.5 : 1));
+          vx += (dx / (d || 1) * speed - vx) * k;
+          vy += (dy / (d || 1) * speed - vy) * k;
         }
-        prevX = cx;
-      }, 250);
+        x = Math.min(maxX, Math.max(0, x + vx * dt));
+        y = Math.min(maxY, Math.max(8, y + vy * dt));
+        if (vx > 12) face = 1; else if (vx < -12) face = -1;
+        flip.style.transform = face < 0 ? 'scaleX(-1)' : '';
+        el.style.transform = 'translate(' + Math.round(x / px) * px + 'px,' + Math.round(y / px) * px + 'px)';
+        sp += dt;
+        if (sp > .09 && Math.hypot(vx, vy) > 40) { sp = 0; spark(); }
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
     })();
   </script>
 </body>

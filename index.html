@@ -790,6 +790,157 @@
       overflow-wrap: anywhere
     }
 
+    /* problem statement accordions */
+    .track-details {
+      background: var(--card);
+      border: 3px solid var(--ink);
+      margin-top: 24px;
+      box-shadow: 6px 6px 0 var(--coral)
+    }
+
+    .track-details.t2 {
+      box-shadow: 6px 6px 0 var(--blue)
+    }
+
+    .track-details>summary {
+      font: 800 22px "Barlow Condensed", Impact, sans-serif;
+      letter-spacing: -.01em;
+      padding: 20px 24px;
+      gap: 16px
+    }
+
+    .track-details>summary .px {
+      font-size: 9px;
+      color: var(--red);
+      display: block;
+      margin-bottom: 4px
+    }
+
+    .track-details>summary::after {
+      font-size: 24px
+    }
+
+    .track-body {
+      padding: 0 24px 28px
+    }
+
+    .track-body>p,
+    .track-body>ul {
+      color: var(--muted);
+      margin: 0 0 14px
+    }
+
+    .track-body>ul {
+      padding-left: 20px
+    }
+
+    .track-body>ul li {
+      color: var(--muted);
+      margin-bottom: 4px
+    }
+
+    .track-guide {
+      background: color-mix(in srgb, var(--teal) 8%, transparent);
+      border: 2px solid var(--teal);
+      padding: 18px 20px;
+      margin-bottom: 20px
+    }
+
+    .track-guide h4 {
+      font: 800 20px "Barlow Condensed", Impact, sans-serif;
+      letter-spacing: -.01em;
+      margin: 0 0 8px;
+      color: var(--teal)
+    }
+
+    .track-guide p,
+    .track-guide li {
+      color: var(--muted);
+      margin: 0 0 6px;
+      font-size: 14px
+    }
+
+    .track-guide code {
+      background: color-mix(in srgb, var(--ink) 8%, transparent);
+      padding: 2px 6px;
+      font: 400 13px "Space Mono", monospace;
+      word-break: break-all
+    }
+
+    .track-guide a {
+      color: var(--teal);
+      font-weight: 600
+    }
+
+    .prob-details {
+      background: var(--card);
+      border: 2px solid color-mix(in srgb, var(--ink) 30%, transparent);
+      margin-bottom: 12px;
+      transition: border-color .15s
+    }
+
+    .prob-details[open] {
+      border-color: var(--ink)
+    }
+
+    .prob-details>summary {
+      padding: 14px 18px;
+      font: 700 14px "Space Mono", monospace;
+      gap: 10px
+    }
+
+    .prob-details>summary::after {
+      font-size: 18px
+    }
+
+    .prob-badge {
+      display: inline-block;
+      font: 400 10px "Space Mono", monospace;
+      padding: 2px 8px;
+      border: 1.5px solid var(--muted);
+      color: var(--muted);
+      margin-left: 8px;
+      vertical-align: middle;
+      white-space: nowrap
+    }
+
+    .prob-body {
+      padding: 0 18px 18px
+    }
+
+    .prob-body p {
+      color: var(--muted);
+      margin: 0 0 12px
+    }
+
+    .prob-body strong {
+      color: var(--ink)
+    }
+
+    .prob-body em {
+      font-style: italic;
+      color: var(--muted)
+    }
+
+    .track-note {
+      border-top: 2px solid color-mix(in srgb, var(--ink) 15%, transparent);
+      margin-top: 20px;
+      padding-top: 18px
+    }
+
+    .track-note h4 {
+      font: 800 20px "Barlow Condensed", Impact, sans-serif;
+      letter-spacing: -.01em;
+      margin: 0 0 6px;
+      color: var(--ink)
+    }
+
+    .track-note p {
+      color: var(--muted);
+      margin: 0 0 8px;
+      font-size: 14px
+    }
+
     footer {
       background: var(--ink);
       color: var(--bg);
@@ -1085,15 +1236,218 @@
           <p>Each track gets example statements. You can also propose your own idea.</p>
         </div>
         <div class="grid">
-          <div class="card soon"><span class="px">TRACK 1</span>
-            <h3>Best use of Gemma 4</h3>
-            <p>Statements drop at kickoff.</p>
+          <div class="card"><span class="px">TRACK 1</span>
+            <h3>Best Use of Gemma 4</h3>
+            <p>It's time to see how much you can build with a lightweight, open model. Gemma 4 brings multimodal intelligence to an open-weight model.</p>
           </div>
-          <div class="card soon"><span class="px">TRACK 2</span>
-            <h3>Best open-source AI project</h3>
-            <p>Statements drop at kickoff.</p>
+          <div class="card"><span class="px">TRACK 2</span>
+            <h3>Best Open-Source AI Project</h3>
+            <p>Build an original project where open-source or open-weight AI is an important part of how the system works.</p>
           </div>
         </div>
+
+        <!-- ── Track 1 Accordion ── -->
+        <details class="track-details">
+          <summary><span><span class="px">TRACK 1</span>Best Use of Gemma 4 — Sub-statements &amp; Guide</span></summary>
+          <div class="track-body">
+            <p>It's time to see how much you can build with a lightweight, open model.</p>
+            <p>Gemma 4 brings multimodal intelligence to an open-weight model, giving you the ability to work with text, images, reasoning, and interactive AI experiences.</p>
+            <p>You could explore:</p>
+            <ul>
+              <li><strong>Multimodal Experiences:</strong> Build systems that understand both text and images.</li>
+              <li><strong>Focused AI Tools:</strong> Create specialised tools for learning, creativity, productivity, accessibility, development, or your community.</li>
+              <li><strong>Interactive AI:</strong> Go beyond question-answering and let AI participate in games, simulations, workflows, or real-world systems.</li>
+              <li><strong>Rapid Prototyping:</strong> Experiment quickly and turn an idea into a working prototype.</li>
+            </ul>
+            <p>Bring your idea to life. What will you build with Gemma 4?</p>
+
+            <div class="track-guide">
+              <h4>How to access Gemma 4</h4>
+              <p>Use the Gemini API with <code>gemma-4-31b-it</code> or <code>gemma-4-26b-a4b-it</code>. You'll need a free API key from Google AI Studio. The API models support text and image input, but not audio.</p>
+              <p>Guide: <a href="https://ai.google.dev/gemma/docs/core/gemma_on_gemini_api" target="_blank" rel="noopener">ai.google.dev/gemma/docs/core/gemma_on_gemini_api</a></p>
+            </div>
+
+            <div class="track-guide">
+              <h4>How this will be judged</h4>
+              <p>A working project is required. Evidence that it works, such as a comparison, a test set, or measured results, will be judged favourably, but it can't replace a working build. Since this is a solo event, choose one narrow slice of a problem rather than the whole thing.</p>
+            </div>
+
+            <h4 style="font:800 22px 'Barlow Condensed',Impact,sans-serif;margin:24px 0 16px;color:var(--ink)">Need a starting point?</h4>
+            <p>Pick one of the problems below, combine ideas, or bring your own. These are inspiration, not fixed problem statements. Original ideas are equally welcome and are not judged less favourably than the examples.</p>
+
+            <details class="prob-details">
+              <summary>1. The Bug That Only Exists on Screen <span class="prob-badge">Beginner – Intermediate</span></summary>
+              <div class="prob-body">
+                <p>Developers often receive UI bug reports as screenshots accompanied by vague descriptions such as "the button looks wrong on my phone."</p>
+                <p>Build a multimodal tool that takes a screenshot together with a short description and identifies what may be wrong. It could turn the information into a structured bug report, suggest possible causes, or recommend where a developer should investigate.</p>
+                <p>You may also explore comparing screenshots from two versions of an interface and identifying meaningful visual changes.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>2. A Tutor That Won't Give You the Answer <span class="prob-badge">Intermediate</span></summary>
+              <div class="prob-body">
+                <p>Students working through proofs, circuits, diagrams, equations, designs, or handwritten solutions often receive feedback only after someone reviews their work.</p>
+                <p>Build a Socratic tutor that looks at a learner's work and helps them discover mistakes without immediately revealing the solution. Instead of solving the problem, the system should guide the learner through carefully chosen questions, observations, or small hints.</p>
+                <p>The challenge is not only understanding the work, but controlling how much assistance the model provides.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>3. Many Tiny Judges <span class="prob-badge">Intermediate</span></summary>
+              <div class="prob-body">
+                <p>A single model response is not always reliable. A lightweight model makes it possible to approach the same problem from several perspectives.</p>
+                <p>Build a system where multiple Gemma 4 instances or roles independently examine the same image, text, or problem. For example, one could act as a skeptic, another as a domain expert, another as a beginner, and another as a verifier. The system should reconcile disagreements and produce a final response.</p>
+                <p><strong>Prove whether it helps:</strong> Compare the multi-role approach against a single model call on a small test set. Report where multiple perspectives improve the result, and where they do not.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>4. The Conversation That Outlives Its Context <span class="prob-badge">Intermediate – Advanced</span></summary>
+              <div class="prob-body">
+                <p>Long-running AI conversations eventually reach a point where everything can no longer remain inside the model's active context. Important goals, decisions, preferences, unresolved questions, and unfinished work may then disappear.</p>
+                <p>Build a system that preserves continuity across context boundaries. As the active context approaches a chosen limit, use Gemma 4 to create a compact handover containing the information a new session needs to continue effectively.</p>
+                <p>Explore challenges such as deciding when a handover should happen, deciding what information deserves to survive, keeping handovers compact without losing important detail, and maintaining accuracy across several successive handovers.</p>
+                <p><strong>Testing idea:</strong> Use an intentionally small context budget during development so repeated handovers are easy to test.</p>
+                <p><strong>Prove it:</strong> Place important facts or decisions early in a conversation, run through several handovers, and measure how well the system preserves them.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>5. Teaching a Model Your Rules Without Training It <span class="prob-badge">Advanced</span></summary>
+              <div class="prob-body">
+                <p>Fine-tuning is not always practical, but prompting, examples, retrieval, structured context, and self-checking can significantly affect model behaviour.</p>
+                <p>Choose a narrow and messy domain, such as handwritten records, receipts, laboratory conventions, club documentation, or a particular writing or review style. Build a system that improves Gemma 4's reliability on that task without fine-tuning the model, using techniques such as few-shot examples, retrieval, structured prompts, validation, and self-checking.</p>
+                <p><strong>Measure the difference:</strong> Report performance before and after each technique so you can show which approaches actually helped.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>6. Gemma as the Brain of a Game or Physical World <span class="prob-badge">Advanced</span></summary>
+              <div class="prob-body">
+                <p>Models are usually asked to answer. Make one act.</p>
+                <p>Build a game, simulation, AR experience, interactive installation, or simple camera-based system where Gemma 4 observes what is happening and decides what should happen next. Examples could include a game character that reacts to what a player draws, a camera system that decides which events are interesting, or an interactive environment that responds to visual input.</p>
+                <p>The challenge is not only making the idea work, but handling latency, unreliable outputs, unexpected situations, and what happens when the model makes a bad decision.</p>
+              </div>
+            </details>
+
+            <div class="track-note">
+              <h4>Have a Different Idea?</h4>
+              <p>Bring it. These examples are only starting points. You are encouraged to explore original, unusual, experimental, or cross-domain ideas, as long as Gemma 4 is meaningfully used as an important part of the project.</p>
+            </div>
+
+            <div class="track-note" style="margin-top:14px;border:none;padding-top:0">
+              <h4>Difficulty Labels</h4>
+              <p>The Beginner, Intermediate, and Advanced labels only indicate the likely implementation complexity of the example. They do not affect judging or scoring. A well-executed beginner-level idea can be stronger than an incomplete advanced one.</p>
+            </div>
+          </div>
+        </details>
+
+        <!-- ── Track 2 Accordion ── -->
+        <details class="track-details t2">
+          <summary><span><span class="px">TRACK 2</span>Best Open-Source AI Project — Sub-statements &amp; Guide</span></summary>
+          <div class="track-body">
+            <p>Build an original project where open-source or open-weight AI is an important part of how the system works.</p>
+            <p>You may build with an open-weight large or small language model, create an Agent Skill, build AI tooling, or create or meaningfully improve an open-source model harness. You may also combine these approaches.</p>
+
+            <div class="track-guide">
+              <h4>Must-Haves</h4>
+              <ul style="padding-left:18px">
+                <li>Open-source or open-weight AI must be an important part of the project.</li>
+                <li>The project must be published in a <strong>public GitHub repository</strong>.</li>
+                <li>The repository must include an <strong>open-source licence</strong>. MIT and Apache-2.0 are common choices.</li>
+                <li>The repository should include clear documentation explaining how the project can be installed, run, and tested.</li>
+                <li>An Agent Skill submission must comply with the <strong>Agent Skill Open Standard</strong>. Specification: <a href="https://agentskills.io/specification" target="_blank" rel="noopener">agentskills.io/specification</a></li>
+                <li>A model-harness submission must include an original implementation or meaningful changes to an existing open-source harness.</li>
+              </ul>
+            </div>
+
+            <div class="track-guide">
+              <h4>How this will be judged</h4>
+              <p>A working project is required. Evidence that it works, such as a comparison, a test set, or measured results, will be judged favourably, but it can't replace a working build. Since this is a solo event, choose one narrow slice of a problem rather than the whole thing.</p>
+            </div>
+
+            <h4 style="font:800 22px 'Barlow Condensed',Impact,sans-serif;margin:24px 0 16px;color:var(--ink)">Need a starting point?</h4>
+            <p>Pick one of the problems below, combine approaches, or bring your own. These are inspiration, not fixed problem statements. Original ideas are equally welcome and are not judged less favourably than the examples.</p>
+
+            <details class="prob-details">
+              <summary>1. The Unwritten Rules Nobody Documents <span class="prob-badge">Beginner – Intermediate · Agent Skill</span></summary>
+              <div class="prob-body">
+                <p>Every club, laboratory, organisation, and codebase develops rules that often exist only in people's heads. How should reports be formatted? How should a new contributor open a pull request? What does a good code review look like?</p>
+                <p>Agents usually need these rules explained repeatedly. Choose one real workflow and package the knowledge as an Agent Skill, so compatible agents can discover and follow it consistently without the whole process being explained again each time.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>2. Skills Nobody Tested <span class="prob-badge">Intermediate · Agent Skill / Evaluation</span></summary>
+              <div class="prob-body">
+                <p>Agent Skills are often shared because they appear useful, but few are systematically tested.</p>
+                <p>Build a skill for a real task and create a small evaluation set that measures whether it actually improves agent performance. Run the same tasks without the skill, with the skill, and, if useful, with different versions of the skill. Publish what you find.</p>
+                <p>A strong project should report not only where the skill helps, but also where it has little effect or makes things worse.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>3. AI That Works With the Internet Off <span class="prob-badge">Intermediate · Small Open-Weight Model</span></summary>
+              <div class="prob-body">
+                <p>Many useful AI applications assume constant access to cloud infrastructure.</p>
+                <p>Build a useful AI system that runs locally on modest hardware using a small open-weight model. Choose a focused task, such as revision help, document understanding, form filling, search over personal documents, or local-language assistance.</p>
+                <p>Evaluate the trade-offs of running locally: response speed, memory usage, model size, answer quality, and hardware requirements. Try to identify the point at which reducing resources makes the system no longer useful for its task.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>4. AI for Knowledge Too Local for General Models <span class="prob-badge">Intermediate · Open-Weight LLM</span></summary>
+              <div class="prob-body">
+                <p>General-purpose models may not reliably know specialised, local, organisation-specific, or frequently changing information.</p>
+                <p>Choose a narrow knowledge source, such as a college handbook, a regional-language government scheme, local regulations, a crop calendar, technical documentation, or community resources. Build an assistant using an open-weight model that answers questions from those documents. It should:</p>
+                <ul style="padding-left:18px;margin:0 0 12px">
+                  <li style="color:var(--muted)">show the source passage used for each answer,</li>
+                  <li style="color:var(--muted)">avoid inventing information that isn't in the documents,</li>
+                  <li style="color:var(--muted)">clearly say when the answer can't be found.</li>
+                </ul>
+                <p>Create a small test set of questions and evaluate how reliably your system answers them.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>5. See Inside the Agent <span class="prob-badge">Intermediate – Advanced · Original Model Harness</span></summary>
+              <div class="prob-body">
+                <p>Agent frameworks can feel like black boxes. When something goes wrong, it's hard to tell whether the problem came from the prompt, the model, a tool call, an incorrect argument, or the control loop itself.</p>
+                <p>Build a deliberately small and understandable model harness from scratch whose main feature is transparency. It could support model calls, tool use, an agent loop, traceable prompts, tool-call histories, replayable executions, and step-by-step debugging.</p>
+                <p>The goal is not to build the largest framework. The goal is to make it easy for a developer to understand exactly what the agent did and why.</p>
+              </div>
+            </details>
+
+            <details class="prob-details">
+              <summary>6. Make a Small Model a Reliable Agent <span class="prob-badge">Advanced · Modified Model Harness</span></summary>
+              <div class="prob-body">
+                <p>Small open-weight models often struggle as agents. Common failures include malformed tool calls, incorrect arguments, choosing the wrong tool, repeatedly calling the same tool, getting stuck in loops, and failing to recover after an error.</p>
+                <p>Take an existing open-source harness and make meaningful changes that improve how reliably small open-weight models use tools. Possible approaches include constrained or structured output, tool-call validation, automatic repair, retry strategies, loop detection, and fallback behaviour.</p>
+                <p>Create a fixed set of tasks and measure success rates before and after each change. The goal is not just to claim the harness is more reliable, but to demonstrate it.</p>
+              </div>
+            </details>
+
+            <div class="track-note">
+              <h4>Have a Different Idea?</h4>
+              <p>Bring it. You can propose any original project that fits the challenge requirements, or combine approaches, such as:</p>
+              <ul style="padding-left:18px;margin:8px 0 0">
+                <li style="color:var(--muted);font-size:14px;margin-bottom:4px">an Agent Skill running on a local model,</li>
+                <li style="color:var(--muted);font-size:14px;margin-bottom:4px">a harness designed to evaluate Agent Skills,</li>
+                <li style="color:var(--muted);font-size:14px;margin-bottom:4px">an offline agent using a small open-weight model,</li>
+                <li style="color:var(--muted);font-size:14px;margin-bottom:4px">an evaluation framework for open models,</li>
+                <li style="color:var(--muted);font-size:14px;margin-bottom:4px">a specialised AI tool built entirely from open-source components.</li>
+              </ul>
+              <p style="margin-top:8px">Originality, experimentation, and evidence are encouraged.</p>
+            </div>
+
+            <div class="track-note" style="margin-top:14px;border:none;padding-top:0">
+              <h4>Difficulty Labels</h4>
+              <p>The Beginner, Intermediate, and Advanced labels only indicate the likely implementation complexity of the example. They do not affect judging or scoring. A well-executed beginner-level idea can be stronger than an incomplete advanced one.</p>
+            </div>
+          </div>
+        </details>
+
       </div>
     </section>
 
